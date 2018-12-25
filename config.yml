@@ -1,0 +1,53 @@
+server:
+  registerDefaultExceptionMappers: false
+  applicationConnectors:
+  - type: http
+    port: 5000
+  adminConnectors:
+  - type: http
+    port: 5001
+  requestLog:
+    timeZone: IST
+
+
+logging:
+  level: INFO
+  loggers:
+    com.wp.npe: DEBUG
+
+
+database:
+  # the name of your JDBC driver
+  driverClass: com.mysql.jdbc.Driver
+
+  # the username
+  user: root
+
+  # the password
+  password: welcome
+
+  # the JDBC URL
+  url: jdbc:mysql://localhost:3306/shout_db?autoReconnect=true&relaxAutoCommit=true&zeroDateTimeBehavior=convertToNull
+
+  # any properties specific to your JDBC driver:
+  properties:
+    charSet: UTF-8
+    hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+    hibernate.jdbc.batch_size: 10
+
+  # the maximum amount of time to wait on an empty pool before throwing an exception
+  maxWaitForConnection: 1s
+
+  # the SQL query to run when validating a connection's liveness
+  validationQuery: "/* MyService Health Check */ SELECT 1"
+
+  checkConnectionOnBorrow: true
+
+  # the minimum number of connections to keep open
+  minSize: 32
+
+  # the maximum number of connections to keep open
+  maxSize: 96
+
+  # whether or not idle connections should be validated
+  checkConnectionWhileIdle: false
